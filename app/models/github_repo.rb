@@ -5,4 +5,4 @@ class GithubRepo
     @name = hash[:name]
     @url = hash["html_rul"]
   end
-end 
+end
