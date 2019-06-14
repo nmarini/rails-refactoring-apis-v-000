@@ -16,6 +16,11 @@ attr_reader :access_token
     user_json["login"]
   end
 
+  def get_repos 
+    response = Faraday.get "https://api.github.com/user/repos", {}, {'Authorization' => "token #{session[:token]}", 'Accept' => 'application/json'}
+    JSON.parse(response.body)
+  end 
+
   def create_repos
     response = Faraday.post "https://api.github.com/user/repos", {name: params[:name]}.to_json, {'Authorization' => "token #{session[:token]}", 'Accept' => 'application/json'}
   end
