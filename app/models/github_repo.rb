@@ -1,8 +1,8 @@
 class GithubRepo
-  attr_reader :name, :html_url
+  attr_reader :name, :url
 
   def initialize(hash)
     @name = hash[:name]
-    @html_url = hash["html_url"]
+    @url = hash["html_url"]
   end
 end
