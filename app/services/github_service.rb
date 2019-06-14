@@ -19,6 +19,7 @@ attr_reader :access_token
   def get_repos
     response = Faraday.get "https://api.github.com/user/repos", {}, {'Authorization' => "token #{self.access_token}", 'Accept' => 'application/json'}
     JSON.parse(response.body)
+    binding.pry
   end
 
   def create_repo(name)
