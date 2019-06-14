@@ -9,4 +9,10 @@ attr_reader :access_token
     access_hash = JSON.parse(response.body)
     @access_token = access_hash["access_token"]
   end
+
+  def get_username 
+    user_response = Faraday.get "https://api.github.com/user", {}, {'Authorization' => "token #{session[:token]}", 'Accept' => 'application/json'}
+    user_json = JSON.parse(user_response.body)
+    user_json["login"]
+  end 
 end
